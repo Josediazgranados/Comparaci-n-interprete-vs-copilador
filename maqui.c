@@ -1,29 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <stdbool.h>
+#include <time.h>
 
-bool es_primo(int n) {
-    if (n < 2) return false;
-    for (int i = 2; i <= (int) sqrt(n); i++) {
-        if (n % i == 0) return false;
+long long factorial_iterativo(int n) {
+    long long res = 1;
+    for (int i = 1; i <= n; i++) {
+        res *= i;
     }
-    return true;
+    return res;
 }
 
-int contar_primos(int limite) {
-    int total = 0;
-    for (int i = 2; i <= limite; i++) {
-        if (es_primo(i)) total++;
-    }
-    return total;
+long long factorial_recursivo(int n) {
+    if (n <= 1) return 1;
+    return n * factorial_recursivo(n - 1);
 }
 
-int main(int argc, char** argv) {
-    int n = 100000;
-    if (argc > 1) {
-        n = atoi(argv[1]);
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        printf("Uso: %s numero\n", argv[0]);
+        return 1;
     }
-    printf("%d\n", contar_primos(n));
+
+    int n = atoi(argv[1]);
+    clock_t start, end;
+    double cpu_time;
+
+    start = clock();
+    long long fact_i = factorial_iterativo(n);
+    end = clock();
+    cpu_time = ((double)(end - start)) / CLOCKS_PER_SEC;
+    printf("Iterativo,%d,%f\n", n, cpu_time);
+
+    start = clock();
+    long long fact_r = factorial_recursivo(n);
+    end = clock();
+    cpu_time = ((double)(end - start)) / CLOCKS_PER_SEC;
+    printf("Recursivo,%d,%f\n", n, cpu_time);
+
     return 0;
 }
