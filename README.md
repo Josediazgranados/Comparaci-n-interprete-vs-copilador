@@ -17,4 +17,4 @@ luego
 ./compara.sh
 esto es para correr los dos programas en los cuales compara el rendimiento entre c y python.
 para ver graficamente la comparacion se coloca 
-python3 pgraficar.py
+python3 graficar.py
