@@ -11,11 +11,10 @@ Archivos del proyecto
 - `resultados.csv`:Archivo con los tiempos obtenidos.
 
 Cómo ejecutar
-primero abre el copilador. copia y pega esto.
-gcc -O3 maqui.c -o maqui -lm
-lo anterior es para que se ejecute el codigo de c.
-luego coloca esto en el copilador.
+ejecuta siguiente comando
+gcc -O3 -o maqui maqui.c
+luego
 ./compara.sh
 esto es para correr los dos programas en los cuales compara el rendimiento entre c y python.
 para ver graficamente la comparacion se coloca 
-python3 plot_results.py
+python3 pgraficar.py
